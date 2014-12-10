@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>939</width>
+    <height>602</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ModelsToLife</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="GLWidget" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="checkBox_showVerts">
+        <property name="toolTip">
+         <string>Show or hide vertices.</string>
+        </property>
+        <property name="text">
+         <string>Verts</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_showTets">
+        <property name="toolTip">
+         <string>Show or hide tetrahedra.</string>
+        </property>
+        <property name="text">
+         <string>Tets</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_showSkeleton">
+        <property name="toolTip">
+         <string>Show or hide the skeleton.</string>
+        </property>
+        <property name="text">
+         <string>Skeleton</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_showAxes">
+        <property name="toolTip">
+         <string>Show or hide the axes.</string>
+        </property>
+        <property name="text">
+         <string>Axes</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_showObject">
+        <property name="toolTip">
+         <string>Show or hide the object.</string>
+        </property>
+        <property name="text">
+         <string>Object</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_showGround">
+        <property name="toolTip">
+         <string>Show or hide the ground.</string>
+        </property>
+        <property name="text">
+         <string>Ground</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_simulate">
+        <property name="toolTip">
+         <string>Start or stop simulation.</string>
+        </property>
+        <property name="text">
+         <string>Simulate</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_addTet">
+        <property name="toolTip">
+         <string>Change things related to tetrahedra, vertices, etc...</string>
+        </property>
+        <property name="text">
+         <string>Edit Tets</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_editObj">
+        <property name="toolTip">
+         <string>Change things related to the object model.</string>
+        </property>
+        <property name="text">
+         <string>Edit Object</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_editSkeleton">
+        <property name="toolTip">
+         <string>Change things related to the bones inside the tetrahedra.</string>
+        </property>
+        <property name="text">
+         <string>Edit Skeleton</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_editSystem">
+        <property name="toolTip">
+         <string>Translate or rotate the system as a whole.</string>
+        </property>
+        <property name="text">
+         <string>Edit System</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_simOptions">
+        <property name="toolTip">
+         <string>Change simulation parameters.</string>
+        </property>
+        <property name="text">
+         <string>Sim Options</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_resetSim">
+        <property name="toolTip">
+         <string>Restart the simulation.</string>
+        </property>
+        <property name="text">
+         <string>Reset Sim</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>939</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionOpen_Object"/>
+    <addaction name="actionOpen_All"/>
+    <addaction name="actionSave_All"/>
+   </widget>
+   <widget class="QMenu" name="menuTetGen">
+    <property name="title">
+     <string>TetGen</string>
+    </property>
+    <addaction name="actionCreate_tets_from_ply"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuTetGen"/>
+  </widget>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save Tet File...</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open Tet File...</string>
+   </property>
+  </action>
+  <action name="actionOpen_Object">
+   <property name="text">
+    <string>Import Object...</string>
+   </property>
+  </action>
+  <action name="actionSave_All">
+   <property name="text">
+    <string>Save All...</string>
+   </property>
+  </action>
+  <action name="actionOpen_All">
+   <property name="text">
+    <string>Open All...</string>
+   </property>
+  </action>
+  <action name="actionCreate_tets_from_ply">
+   <property name="text">
+    <string>Import tetgen files</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GLWidget</class>
+   <extends>QWidget</extends>
+   <header>glwidget.hpp</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
