@@ -7,8 +7,8 @@
 #include <iostream>
 
 
-ParticleSystem::ParticleSystem(): mDeltaT(0.016f), mGravity(9.8f),
-    mRestitution(0.25f), mStiffness(200.f), mDamping(10.f), mMass(0.5f),
+ParticleSystem::ParticleSystem(): mDeltaT(0.008f), mGravity(2.0f),
+    mRestitution(0.25f), mStiffness(100.f), mDamping(2.f), mMass(0.2f),
     mSimulate(true)
 { }
 
@@ -45,7 +45,6 @@ void ParticleSystem::initParticleSystem()
 void ParticleSystem::computeForcesAndUpdateParticles()
 {
     if (mSimulate) {
-        float friction = 0.3f;
         computeForcesOnSystem();
 
         for (auto it = mParticles.begin(); it != mParticles.end(); ++it) {
@@ -77,8 +76,8 @@ void ParticleSystem::computeForcesAndUpdateParticles()
                  * Vec3f(0.0, 1.0, 0.0) < 0.05)
                 && it->getVelocity()*Vec3f(0.0, 1.0, 0.0) <= 0.0) {
                 auto oldVel = it->getVelocity();
-                auto newVel = Vec3f(friction*mRestitution*oldVel[0], -mRestitution*oldVel[1],
-                                    friction*mRestitution*oldVel[2]);
+                auto newVel = Vec3f(mRestitution*oldVel[0], -mRestitution*oldVel[1],
+                                    mRestitution*oldVel[2]);
                 it->setVelocity(newVel);
 
                 if (abs(it->getVelocity().length()) < 0.001) {

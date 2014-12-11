@@ -23,12 +23,12 @@ void SimOptionsDialog::setUpSimOptionsDialog()
     ui->horizontalSlider_deltaT->setRange(0, 100);
     ui->horizontalSlider_deltaT->setSingleStep(1);
     ui->horizontalSlider_deltaT->setPageStep(10);
-    ui->horizontalSlider_deltaT->setValue(16); // 16 ms
+    ui->horizontalSlider_deltaT->setValue(8); // 8 ms
 
     ui->horizontalSlider_gravity->setRange(-100, 150);
     ui->horizontalSlider_gravity->setSingleStep(1);
     ui->horizontalSlider_gravity->setPageStep(10);
-    ui->horizontalSlider_gravity->setValue(98); // 9.8 m/s^2
+    ui->horizontalSlider_gravity->setValue(20); // 2.0 m/s^2
 
     ui->horizontalSlider_restitution->setRange(0, 100);
     ui->horizontalSlider_restitution->setSingleStep(1);
@@ -38,17 +38,17 @@ void SimOptionsDialog::setUpSimOptionsDialog()
     ui->horizontalSlider_stiffness->setRange(0, 100);
     ui->horizontalSlider_stiffness->setSingleStep(1);
     ui->horizontalSlider_stiffness->setPageStep(10);
-    ui->horizontalSlider_stiffness->setValue(20); // 200 N/m
+    ui->horizontalSlider_stiffness->setValue(20); // 100 N/m
 
     ui->horizontalSlider_damping->setRange(0, 200);
     ui->horizontalSlider_damping->setSingleStep(1);
     ui->horizontalSlider_damping->setPageStep(10);
-    ui->horizontalSlider_damping->setValue(100); // 10
+    ui->horizontalSlider_damping->setValue(40); // 2
 
     ui->horizontalSlider_mass->setRange(0, 100);
     ui->horizontalSlider_mass->setSingleStep(1);
     ui->horizontalSlider_mass->setPageStep(10);
-    ui->horizontalSlider_mass->setValue(5); // 0.5 kg
+    ui->horizontalSlider_mass->setValue(4); // 0.2 kg
 }
 
 
@@ -92,20 +92,20 @@ void SimOptionsDialog::changeRestitution(int state)
 
 void SimOptionsDialog::changeStiffness(int state)
 {
-    *mpStiffness = 10.f * state;
+    *mpStiffness = 5.f * state;
     emit propertiesChanged();
 }
 
 
 void SimOptionsDialog::changeDamping(int state)
 {
-    *mpDamping = 0.1f * state;
+    *mpDamping = 0.05f * state;
     emit propertiesChanged();
 }
 
 
 void SimOptionsDialog::changeMass(int state)
 {
-    *mpMass = 0.1f * state;
+    *mpMass = 0.05f * state;
     emit propertiesChanged();
 }
