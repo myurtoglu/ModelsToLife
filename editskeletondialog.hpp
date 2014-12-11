@@ -17,6 +17,7 @@ public:
     explicit EditSkeletonDialog(QWidget *parent = 0);
     ~EditSkeletonDialog();
     void updateLists();
+    void updateJoints();
 
     std::vector<Vec3f>            *mpVertices;
     std::vector<std::vector<int>> *mpBones;

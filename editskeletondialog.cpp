@@ -30,9 +30,9 @@ EditSkeletonDialog::EditSkeletonDialog(QWidget *parent): QDialog(parent),
     connect(ui->pushButton_removeBone, &QPushButton::clicked, this,
             &EditSkeletonDialog::removeBone);
 
-    ui->verticalSlider_x->setRange(0, 120);
-    ui->verticalSlider_y->setRange(0, 120);
-    ui->verticalSlider_z->setRange(0, 120);
+    ui->verticalSlider_x->setRange(-60, 60);
+    ui->verticalSlider_y->setRange(-60, 60);
+    ui->verticalSlider_z->setRange(-60, 60);
     ui->verticalSlider_x->setSingleStep(1);
     ui->verticalSlider_y->setSingleStep(1);
     ui->verticalSlider_z->setSingleStep(1);
@@ -377,3 +377,39 @@ void EditSkeletonDialog::stickBonesStateChanged(int state)
     emit stickBonesStateChangedSignal(state);
 }
 
+
+void EditSkeletonDialog::updateJoints()
+{
+    mJoints.clear();
+
+    for (const auto &el : *mpBones) {
+        int idx0 = el[0];
+        int idx1 = el[1];
+
+        bool idx0alreadyAdded = false;
+        bool idx1alreadyAdded = false;
+
+        for (const auto &el : mJoints) {
+            if (el == idx0) {
+                idx0alreadyAdded = true;
+            }
+
+            if (el == idx1) {
+                idx1alreadyAdded = true;
+            }
+        }
+
+        if (!idx0alreadyAdded) {
+            mJoints.push_back(idx0);
+        }
+
+        if (!idx1alreadyAdded) {
+            mJoints.push_back(idx1);
+        }
+    }
+
+    ui->comboBox_joint->clear();
+    for (const auto &el : mJoints) {
+        ui->comboBox_joint->addItem(QString::number(el));
+    }
+}
