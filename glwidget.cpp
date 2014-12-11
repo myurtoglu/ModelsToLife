@@ -419,18 +419,19 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event) {
 }
 
 
-void GLWidget::wheelEvent(QWheelEvent* event)
+void GLWidget::wheelEvent(QWheelEvent *event)
 {
     if (mMidbutton) {
         return;
     }
 
-    if (event->delta() > 0) {
+    if ((event->delta() > 0) && (event->modifiers() & Qt::ShiftModifier)) {
         zoomFactor = std::max(0.f, zoomFactor*0.95f);
     }
-    else if (event->delta() < 0) {
+    else if ((event->delta() < 0) && (event->modifiers() & Qt::ShiftModifier)) {
         zoomFactor *= 1.05f;
     }
+
     resizeGL(this->width(), this->height());
     updateGL();
 }

@@ -99,6 +99,8 @@ void MainWindow::createConnections()
             &MainWindow::openAddTetDialog);
     connect(ui->pushButton_editSkeleton, &QPushButton::clicked, this,
             &MainWindow::openEditSkeletonDialog);
+    connect(ui->pushButton_editSkeleton, &QPushButton::clicked, pEditSkeletonDialog,
+            &EditSkeletonDialog::updateJoints);
     connect(ui->pushButton_resetSim, &QPushButton::clicked, ui->widget,
             &GLWidget::resetSim);
     connect(ui->pushButton_simOptions, &QPushButton::clicked, this,
@@ -157,31 +159,33 @@ void MainWindow::createShortcutKeys()
     ui->actionOpen_All->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_L));
 
     QAction *exit = new QAction(this);
-    exit->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
-
+    exit->setShortcut(QKeySequence(Qt::Key_Escape));
     connect(exit, SIGNAL(triggered()), this, SLOT(close()));
     this->addAction(exit);
 
     QAction *showTets = new QAction(this);
     showTets->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_T));
-
     connect(showTets, SIGNAL(triggered()), ui->checkBox_showTets,
             SLOT(toggle()));
     this->addAction(showTets);
 
     QAction *showVerts = new QAction(this);
     showVerts->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_V));
-
     connect(showVerts, SIGNAL(triggered()), ui->checkBox_showVerts,
             SLOT(toggle()));
     this->addAction(showVerts);
 
     QAction *showObject = new QAction(this);
     showObject->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
-
     connect(showObject, SIGNAL(triggered()), ui->checkBox_showObject,
             SLOT(toggle()));
     this->addAction(showObject);
+
+    QAction *startSim = new QAction(this);
+    startSim->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Return));
+    connect(startSim, SIGNAL(triggered()), ui->checkBox_simulate,
+            SLOT(toggle()));
+    this->addAction(startSim);
 }
 
 

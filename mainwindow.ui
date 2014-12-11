@@ -220,12 +220,12 @@
   </action>
   <action name="actionSave_All">
    <property name="text">
-    <string>Save All...</string>
+    <string>Save Sim...</string>
    </property>
   </action>
   <action name="actionOpen_All">
    <property name="text">
-    <string>Open All...</string>
+    <string>Open Sim...</string>
    </property>
   </action>
   <action name="actionCreate_tets_from_ply">
